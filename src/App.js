@@ -4,8 +4,8 @@ import Home from "./components/Home"
 import About from "./components/About"
 import Contact from "./components/Contact"
 import Nav from "./components/Nav"
-
-import WeeklySchedule from './components/WeeklySchedule';
+import WeeklyBoard from "./components/WeeklyBoard"
+import ClientsPage from './components/ClientsPage';
 
 import {
   BrowserRouter as Router,
@@ -20,9 +20,10 @@ function App() {
     <Router>
       <Route path="/" component={Nav} />
       <Route exact path="/" component={Home} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/about" component={About} />
-      <Route exact path="/weeklyschedule" component={WeeklySchedule} />
+      <Route exact path="/contact" component={Contact} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/clientsPage/" component={ClientsPage} />
+      <Route path="/weeklyBoard/:id" component={WeeklyBoard} />
     </Router>
     </div>
   );

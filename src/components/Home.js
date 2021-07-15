@@ -16,6 +16,7 @@ export const Home = () => {
     setName("")
     setHeight("")
     setWeight("")
+    // Buradan id'yi alip urlye ekleyip weeklyboard'a gidecek
   };
 
 
@@ -39,14 +40,14 @@ export const Home = () => {
         <input
           type="text"
           name="height"
-          placeholder="Height"
+          placeholder="Height in cm"
           value={height}
           onChange={(e) => setHeight(e.target.value)}
         />
         <input
           type="text"
           name="weight"
-          placeholder="Weight"
+          placeholder="Weight in kg"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
         />
