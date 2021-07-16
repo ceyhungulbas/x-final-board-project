@@ -4,6 +4,8 @@ import db from "../firebaseConfig";
 import {
   Link
 } from "react-router-dom";
+import {Easel} from "react-bootstrap-icons";
+import Button from 'react-bootstrap/Button'
 
 
 const ClientsPage = () => {
@@ -30,24 +32,43 @@ const ClientsPage = () => {
   }, []);
 
 console.log("users: ", users)
-  // https://github.com/KaterinaLupacheva/react-sorting-with-dropdown/blob/master/src/App.js
-  // https://dev.to/ramonak/react-how-to-dynamically-sort-an-array-of-objects-using-the-dropdown-with-react-hooks-195p
-  
-  // const [data, setData] = useState(users);
-  // const [sortType, setSortType] = useState('name');
-  // useEffect(() => {
-  //   const sortArray = type => {
-  //     const types = {
-  //       name: 'name',
-  //       bmi: 'bmi',
-  //     };
-  //     const sortProperty = types[type];
-  //     const sorted = [...bands].sort((a, b) => b[sortProperty] - a[sortProperty]);
-  //     setData(sorted);
-  //   };
+ 
+// https://github.com/KaterinaLupacheva/react-sorting-with-dropdown/blob/master/src/App.js
 
-  //   sortArray(sortType);
-  // }, [sortType]); 
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('name');
+  
+    // // // //  A Plan
+    useEffect(() =>{
+      if(users !== []){
+        console.log("triggered!")
+      const sortArray = type => {
+        const types = {
+          name: 'name',
+          weight: 'weight',
+          height: 'height',
+        };
+        const sortProperty = types[type]
+        const sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
+        console.log("sorted: ", sorted)
+        console.log("sortProperty: ", sortProperty)
+        setData(sorted)
+      }
+      sortArray(sortType)}
+    },[sortType])
+    
+    // // // //  B Plan
+    // const sortArray = type => {
+    //     const types = {
+    //       name: 'name',
+    //       weight: 'weight',
+    //     };
+    //   const sortProperty = types[type];
+    //   const sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
+    //   console.log("sorted: ", sorted)
+    //   console.log("sortProperty: ", sortProperty)
+    //   setData(sorted);
+    // };
   
 
   return (
@@ -55,10 +76,12 @@ console.log("users: ", users)
       <div>
         <h1>Clients List</h1>
 
-        {/* <select onChange={(e) => setSortType(e.target.value)}> 
+        <select onChange={(e) => setSortType(e.target.value)}> 
+        {/* <select onChange={(e) => sortArray(e.target.value)}>  */}
           <option value="name">Name</option>
-          <option value="bmi">BMI</option>
-        </select> */}
+          <option value="weight">Weight</option>
+          <option value="height">Height</option>
+        </select>
 
 
 
@@ -95,13 +118,14 @@ console.log("users: ", users)
             <br />
             <span>BMI: {bmi}</span>
             <br />
-            {/* <button onClick={navigateToBoard}>Go to Weekly Board</button> */}
-            <button onClick={editClient}>Edit Client</button>
-            <button onClick={removeClient}>Good Bye Client</button>
-            <button><Link to={`/weeklyBoard/${user.id}`}>Select Client</Link></button>
+            <div >
+              <Link className="m-1" to={`/weeklyBoard/${user.id}`}><Easel color="green" size={35} /></Link>
+              <Button className="m-1" variant="outline-warning" onClick={editClient}>Edit Client</Button>
+              <Button className="m-1" variant="outline-danger" onClick={removeClient}>Good Bye Client</Button>
+            </div>
             <br />
             <br />
-          </div>
+        </div>
         );
       })}
       </div>

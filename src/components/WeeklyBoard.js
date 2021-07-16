@@ -9,6 +9,7 @@ import db from "../firebaseConfig";
 
 
 const WeeklyBoard = () => {
+
   let {id} = useParams()
   // console.log("id: ", id)
 
@@ -117,22 +118,16 @@ useEffect(() => {
   fetchExerciseFunc();
 }, []);
 
+const daysDivStyling = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "baseline",
+  alignContent: "stretch",
+  marginTop: "20px",
+} 
 
 
-
-// const LiTagData = () => {
-//   let data = Object.values(allExercises)
-//   const listData = data.map((d) => <li key={d.name}>{d.name}</li>)
-//   return listData
-// }
-
-// {allExercises.map((item) => (
-//   <span id={item.id}>
-//     {Object.values(item).map((val) => (
-//       <span>{val}</span>
-//     ))}
-//   </span>
-// ))}
 
 
 return (
@@ -161,63 +156,23 @@ return (
       </select>
       <input type="submit" onClick = {handleSubmit} />
     </form>
-    <div id="daysDiv">
+    <div id="daysDiv" style={daysDivStyling}>
       {Object.keys(allExercises).map((key) => {
+        console.log(allExercises[key])
         return <div className="days">
-          <h1>{key}</h1>
+          <h3>{key}</h3>
+          {/* EDIT REMOVE EKLENECEK TEK HARFLI BUTTONLARLA MSUTAFAYA SOR */}
+          {allExercises[key].map((val) => (
           <p>
-            
+            {val}
+            {/* <button onClick={finishedExercise}>✓</button>
+            <button onClick={editExercise}>E</button>
+            <button onClick={removeExercise}>X</button> */}
           </p>
-          
+          ))}
         </div>
       })}
  
-      {/* <table>
-        <tr>
-          {Object.keys(allExercises).map((key) => {
-            return <th>{key}</th>
-          })}
-        </tr>
-        {allExercises.map((item) => (
-          <tr key={item.id}>
-            {Object.values(item).map((val) => (
-              <td>{val}</td>
-            ))}
-          </tr>
-        ))}
-      </table> */}
-      {/* <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-      </tr>
-      <tr>
-        <td>
-          {allExercises.Monday}
-        </td>
-        <td>
-          {allExercises.Tuesday}
-        </td>
-        <td>
-          {allExercises.Wednesday}
-        </td>
-        <td>
-          {allExercises.Thursday}
-        </td>
-        <td>
-          {allExercises.Friday}
-        </td>
-        <td>
-          {allExercises.Saturday}
-        </td>
-        <td>
-          {allExercises.Sunday}
-        </td>
-      </tr> */}
     </div>
   </>
   )

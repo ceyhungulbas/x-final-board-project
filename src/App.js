@@ -3,9 +3,11 @@ import './App.css';
 import Home from "./components/Home"
 import About from "./components/About"
 import Contact from "./components/Contact"
-import Nav from "./components/Nav"
+import NavBar from "./components/NavBar"
 import WeeklyBoard from "./components/WeeklyBoard"
 import ClientsPage from './components/ClientsPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//Maybe gonna change
 
 import {
   BrowserRouter as Router,
@@ -18,7 +20,7 @@ function App() {
   return (
     <div className="App">
     <Router>
-      <Route path="/" component={Nav} />
+      <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/about" component={About} />

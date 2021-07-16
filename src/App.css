@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Comic Neue', cursive;
 }
 
 .App-logo {
@@ -37,11 +38,9 @@
   }
 }
 
-/* #daysDiv{
-  display: "flex";
-	flex-direction: "row";
-	flex-wrap: "nowrap";
-	justify-content: "flex-start";
-	align-items: "stretch";
-	align-content: "stretch"
-} */
+.days{
+  /* margin gelebilir ustten */
+  padding: 0 2% 0 2%;
+}
+
+
