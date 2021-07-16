@@ -69,6 +69,7 @@ const handleChange = (e) => {
   setExercise({value: e.target.value});
 }
 
+// map func with if cond
 // Submit
 const handleSubmit = async (e) => {
   e.preventDefault();

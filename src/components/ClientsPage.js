@@ -35,7 +35,6 @@ console.log("users: ", users)
  
 // https://github.com/KaterinaLupacheva/react-sorting-with-dropdown/blob/master/src/App.js
 
-    const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('name');
   
     // // // //  A Plan
@@ -49,10 +48,18 @@ console.log("users: ", users)
           height: 'height',
         };
         const sortProperty = types[type]
-        const sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
+        let sorted = []
+        if(sortProperty === 'name'){
+          sorted = [...users].sort((a, b) => a[sortProperty].localeCompare(b[sortProperty]));
+          console.log("sortProperty: ", sortProperty)
+        }
+        else{
+          sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
+        }
+        // const sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
         console.log("sorted: ", sorted)
         console.log("sortProperty: ", sortProperty)
-        setData(sorted)
+        setUsers(sorted)
       }
       sortArray(sortType)}
     },[sortType])
