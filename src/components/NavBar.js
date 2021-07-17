@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-
+//reactrouter
 export const NavBar = () => {
   return (
     <Nav variant="pills" defaultActiveKey="/home" as="ul">

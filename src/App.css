@@ -2,7 +2,7 @@ html,
 body {
   overflow-x: hidden;
   min-height: 100vh;
-  font-family: "Comic Neue", cursive;
+  
   background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.85),
@@ -15,6 +15,7 @@ body {
 
 .App {
   text-align: center;
+  font-family: "Comic Neue", cursive;
 }
 
 .days {
@@ -76,7 +77,7 @@ body {
 #userInfoinWeeklyBoard {
   margin-top: 25px;
   font-size: larger;
-  color: rgb(0, 0, 0);
+  color: darkcyan;
 }
 
 .form-control {

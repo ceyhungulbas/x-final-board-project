@@ -7,7 +7,6 @@ import NavBar from "./components/NavBar";
 import WeeklyBoard from "./components/WeeklyBoard";
 import ClientsPage from "./components/ClientsPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-//Maybe gonna change
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
