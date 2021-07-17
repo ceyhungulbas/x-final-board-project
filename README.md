@@ -1,4 +1,4 @@
-##Things to install
+## Things to install
 
 npm install\
 yarn add\
