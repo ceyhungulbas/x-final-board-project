@@ -1,46 +1,116 @@
+html,
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-family: "Comic Neue", cursive;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.85),
+      rgba(18, 42, 66, 0.85)
+    ),
+    url("../src/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .App {
   text-align: center;
-  font-family: 'Comic Neue', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.days {
+  padding: 0 3% 0 3%;
+  display: block ruby;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#contactGithub {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   align-items: center;
+  align-content: stretch;
+  font-size: x-large;
+  margin-top: 50px;
+}
+
+#contactPage {
+  margin-top: 50px;
+}
+
+.formDatas {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.btn-info {
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  margin-top: 20px;
+}
+
+#daysDiv {
+  margin-top: 50px;
+}
+
+#daysDiv > .days > p {
+  float: left;
+}
+
+#removeExerciseButton {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.nav-pills {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+#userInfoinWeeklyBoard {
+  margin-top: 25px;
+  font-size: larger;
+  color: rgb(0, 0, 0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-control {
+  text-align: center;
 }
 
-.days{
-  /* margin gelebilir ustten */
-  padding: 0 2% 0 2%;
+.clients {
+  margin-top: 25px;
+  font-size: larger;
 }
 
+.nav-item {
+  font-size: larger;
+}
 
+#aboutPTag {
+  font-size: larger;
+}
+
+/* TEST
+.daysDivStyling {
+  display: "flex";
+  flex-direction: "row";
+  justify-content: "flex-start";
+  align-items: "baseline";
+  align-content: "stretch";
+  margin-top: "20px";
+} 
+
+.daysDivStylingColumn {
+  display: "flex";
+  flex-direction: "column";
+  justify-content: "flex-start";
+  align-items: "baseline";
+  align-content: "stretch";
+  margin-top: "20px";
+} */

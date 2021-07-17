@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Nav from 'react-bootstrap/Nav';
+import Nav from "react-bootstrap/Nav";
 
 export const NavBar = () => {
   return (
-    <Nav  variant="pills" defaultActiveKey="/home" as="ul">
+    <Nav variant="pills" defaultActiveKey="/home" as="ul">
       <Nav.Item as="li">
         <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
