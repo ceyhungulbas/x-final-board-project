@@ -2,7 +2,7 @@ html,
 body {
   overflow-x: hidden;
   min-height: 100vh;
-  
+
   background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.85),
@@ -82,6 +82,7 @@ body {
 
 .form-control {
   text-align: center;
+  width: 70% !important;
 }
 
 .clients {
@@ -96,22 +97,3 @@ body {
 #aboutPTag {
   font-size: larger;
 }
-
-/* TEST
-.daysDivStyling {
-  display: "flex";
-  flex-direction: "row";
-  justify-content: "flex-start";
-  align-items: "baseline";
-  align-content: "stretch";
-  margin-top: "20px";
-} 
-
-.daysDivStylingColumn {
-  display: "flex";
-  flex-direction: "column";
-  justify-content: "flex-start";
-  align-items: "baseline";
-  align-content: "stretch";
-  margin-top: "20px";
-} */

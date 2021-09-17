@@ -7,11 +7,8 @@ import { TrashFill } from "react-bootstrap-icons";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-// https://firebase.google.com/docs/firestore/query-data/get-data
-
 const WeeklyBoard = () => {
   let { id } = useParams();
-  // console.log("id: ", id)
 
   const [user, setUser] = useState([]);
 
@@ -19,13 +16,6 @@ const WeeklyBoard = () => {
     let docRef = await db.collection("users").doc(id);
 
     docRef.get().then((doc) => {
-      if (doc.exists) {
-        // console.log("fetchUser Document data:", doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        // console.log("No such document!");
-      }
-
       setUser(doc.data());
     });
   };
@@ -34,8 +24,6 @@ const WeeklyBoard = () => {
     fetchUser();
     // eslint-disable-next-line
   }, []);
-
-  // console.log("user ", user)
 
   let bmi = (user.weight / ((user.height * user.height) / 10000)).toFixed(2);
 
@@ -94,17 +82,11 @@ const WeeklyBoard = () => {
   };
 
   const removeExercise = async (val, id, key, index) => {
-    // console.log("removeExercise VAL: ", val);
-    // console.log("key: ", key);
-    // console.log("id: ", id);
-    // console.log("index: ", index);
-    // console.log("allExercises: ", allExercises)
-
     db.collection("users")
       .doc(id)
       .collection("workouts")
       .doc(key)
-      .update({ [index]: firebase.firestore.FieldValue.delete() });
+      .update({ [val.index]: firebase.firestore.FieldValue.delete() });
 
     fetchExerciseFunc();
   };
@@ -122,17 +104,10 @@ const WeeklyBoard = () => {
     });
   };
 
-  // console.log("allExercises: ", allExercises)
-
   useEffect(() => {
     fetchExerciseFunc();
     // eslint-disable-next-line
   }, []);
-
-  // const handleChangeView = () => {
-  //   // console.log("Triggered");
-  //   // setChangeDisplay({changeDisplay : !changeDisplay})
-  // };
 
   // Main DIV Styling
   const daysDivStyling = {
@@ -143,19 +118,6 @@ const WeeklyBoard = () => {
     alignContent: "stretch",
     marginTop: "20px",
   };
-
-  // const daysDivStylingColumn = {
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   justifyContent: "flex-start",
-  //   alignItems: "baseline",
-  //   alignContent: "stretch",
-  //   marginTop: "20px",
-  // }
-
-  // let [changeDisplay, setChangeDisplay] = useState(false)
-
-  // let changeDisplayStyle = changeDisplay ? daysDivStyling : daysDivStylingColumn
 
   return (
     <>
@@ -193,22 +155,17 @@ const WeeklyBoard = () => {
             <option value="Sunday">Sunday</option>
           </Form.Control>
           <Button variant="info" onClick={handleSubmit}>
-            Submit
+            Add exercise
           </Button>
         </Form>
-        {/* <Button variant="secondary" onClick={handleChangeView}>
-          Change Display
-        </Button> */}
       </div>
       <div id="daysDiv" style={daysDivStyling}>
-        {/* <div id="daysDiv" style={{setChangeDisplay}}> */}
-        {Object.keys(allExercises).map((key) => {
-          // console.log(allExercises[key])
+        {Object.keys(allExercises).map((key, index) => {
           return (
-            <div className="days">
+            <div className="days" key={index}>
               <h3>{key}</h3>
               {allExercises[key].map((val, index) => (
-                <p>
+                <p key={index}>
                   <button
                     id="removeExerciseButton"
                     onClick={() => removeExercise(val, id, key, index)}
@@ -216,8 +173,6 @@ const WeeklyBoard = () => {
                     <TrashFill color="red" />
                   </button>
                   {val}
-                  {/* <button onClick={finishedExercise}>✓</button> */}
-                  {/* <button value={val} onClick={editExercise}>E</button> */}
                 </p>
               ))}
             </div>

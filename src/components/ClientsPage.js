@@ -13,10 +13,8 @@ const ClientsPage = () => {
     // Fetching all the collection
     const collection = await db.collection("users").get();
     const arrayOfDocs = collection.docs.map((doc) => {
-      // console.log("doc.id", doc.id);
       return { id: doc.id, ...doc.data() };
     });
-    // console.log("arrayOfDocs", arrayOfDocs);
     setUsers(arrayOfDocs);
   };
 
@@ -24,15 +22,10 @@ const ClientsPage = () => {
     fetchUsers();
   }, []);
 
-  // console.log("users: ", users);
-
-  // https://github.com/KaterinaLupacheva/react-sorting-with-dropdown/blob/master/src/App.js
-
   const [sortType, setSortType] = useState("name");
 
   useEffect(() => {
     if (users !== []) {
-      // console.log("triggered!");
       const sortArray = (type) => {
         const types = {
           name: "name",
@@ -45,13 +38,9 @@ const ClientsPage = () => {
           sorted = [...users].sort((a, b) =>
             a[sortProperty].localeCompare(b[sortProperty])
           );
-          // console.log("sortProperty: ", sortProperty);
         } else {
           sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
         }
-        // const sorted = [...users].sort((a, b) => b[sortProperty] - a[sortProperty]);
-        // console.log("sorted: ", sorted);
-        // console.log("sortProperty: ", sortProperty);
         setUsers(sorted);
       };
       sortArray(sortType);
@@ -70,7 +59,7 @@ const ClientsPage = () => {
           <option value="height">Height</option>
         </select>
 
-        {users.map((user) => {
+        {users.map((user, index) => {
           const removeClient = async () => {
             await db.collection("users").doc(user.id).delete();
             fetchUsers();
@@ -94,7 +83,7 @@ const ClientsPage = () => {
           ).toFixed(2);
 
           return (
-            <div className="clients">
+            <div className="clients" key={index}>
               <span>Name: {user.name}</span>
               <br />
               <span>Height: {user.height}cm</span>

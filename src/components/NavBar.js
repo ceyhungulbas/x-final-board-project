@@ -1,23 +1,29 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-//reactrouter
+import { Link } from "react-router-dom";
+
 export const NavBar = () => {
   return (
     <Nav variant="pills" defaultActiveKey="/home" as="ul">
       <Nav.Item as="li">
-        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link as={Link} to="/">
+          Home
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link href="/about">About</Nav.Link>
+        <Nav.Link as={Link} to="/about">
+          About
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link href="/contact">Contact</Nav.Link>
+        <Nav.Link as={Link} to="/contact">
+          Contact
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link href="/clientspage">Client Page</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link href="/weeklyboard">Weekly Board</Nav.Link>
+        <Nav.Link as={Link} to="/clientspage">
+          Client Page
+        </Nav.Link>
       </Nav.Item>
     </Nav>
   );
